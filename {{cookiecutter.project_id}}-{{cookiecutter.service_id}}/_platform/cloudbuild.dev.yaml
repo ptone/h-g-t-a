@@ -1,0 +1,27 @@
+steps:
+  # build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/{{cookiecutter.service_id}}', '-f', '_platform/Dockerfile', '.']
+  # push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/{{cookiecutter.service_id}}']
+  # Deploy container image to Cloud Run
+- name: 'gcr.io/cloud-builders/gcloud'
+  # TODO service account, dynamic region
+  args:
+    - 'alpha'
+    - 'run'
+    - 'deploy'
+    - '{{cookiecutter.service_id}}'
+    - '--image'
+    - 'gcr.io/$PROJECT_ID/{{cookiecutter.service_id}}'
+    - '--region'
+    - 'us-central1'
+    - '--platform'
+    - 'managed'
+    - '--no-allow-unauthenticated'
+    - '--service-account'
+    - '{{cookiecutter.service_id}}-robot@$PROJECT_ID.iam.gserviceaccount.com'
+    - '--quiet'
+images:
+- gcr.io/$PROJECT_ID/{{cookiecutter.service_id}}
