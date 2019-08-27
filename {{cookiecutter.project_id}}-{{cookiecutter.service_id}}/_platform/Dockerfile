@@ -8,7 +8,6 @@ COPY . /modbuild
 RUN go build -o /app *.go
 
 FROM alpine:3.9
-CMD ["./app"]
+CMD ["/app"]
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /app .
-CMD ["/app"]
