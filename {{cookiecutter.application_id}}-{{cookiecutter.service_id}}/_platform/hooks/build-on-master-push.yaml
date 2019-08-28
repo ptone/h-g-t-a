@@ -3,6 +3,6 @@ trigger:
   event-type: repo-push
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/{{cookiecutter.envs.development}}/{{cookiecutter.service_id}}', '-f', '_platform/Dockerfile', '.']
+    args: ['build', '-t', 'gcr.io/{{cookiecutter.envs.development}}/{{cookiecutter.service_id}}:$_COMMIT_ID', '-f', '_platform/Dockerfile', '.']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/{{cookiecutter.envs.development}}/{{cookiecutter.service_id}}']
