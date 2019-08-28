@@ -1,8 +1,8 @@
 trigger:
-  commit-match: 'dev.svctk.{{cookiecutter.application_id}}.{{cookiecutter.service_id}}.refs/heads/master'
+  commit-match: 'dev.svctk.{{cookiecutter.envs.development}}.{{cookiecutter.service_id}}.refs/heads/master'
   event-type: repo-push
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/{{cookiecutter.application_id}}/{{cookiecutter.service_id}}', '-f', '_platform/Dockerfile', '.']
+    args: ['build', '-t', 'gcr.io/{{cookiecutter.envs.development}}/{{cookiecutter.service_id}}', '-f', '_platform/Dockerfile', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/{{cookiecutter.application_id}}/{{cookiecutter.service_id}}']
+    args: ['push', 'gcr.io/{{cookiecutter.envs.development}}/{{cookiecutter.service_id}}']
