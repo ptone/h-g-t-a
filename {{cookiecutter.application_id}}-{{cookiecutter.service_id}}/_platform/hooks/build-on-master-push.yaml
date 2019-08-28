@@ -1,5 +1,5 @@
 trigger:
-  commit-match: 'dev.svctk.{{cookiecutter.envs.development}}.{{cookiecutter.service_id}}.refs/heads/master'
+  commit-match: 'dev.svctk.{{cookiecutter.application_id}}.{{cookiecutter.service_id}}.master_'
   event-type: repo-push
 steps:
   - name: 'gcr.io/cloud-builders/docker'
