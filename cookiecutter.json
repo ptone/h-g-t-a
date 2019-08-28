@@ -1,5 +1,10 @@
 {
     "application_id": "onboarding",
     "author": "ptone",
-    "service_id": "hello-test"
+    "service_id": "hello-test",
+    "envs": {
+        "development":"",
+        "staging":"",
+        "production":""
+    }
 }
