@@ -1,0 +1,43 @@
+# required
+application_id: {{cookiecutter.application_id}}
+# required
+service_id: {{cookiecutter.service_id}}
+
+name: {{cookiecutter.service_id}}
+description: A longer description of what {{cookiecutter.service_id}} does
+
+# labels:
+#   key1: value1
+
+major_version: 1
+roles:
+
+auth:
+  # identity service account is generally auto created by automation
+  # identity: foo-robot@
+  roles:
+    - storage.objectViewer
+    - cloudtasks.enqueuer
+  invokers:
+    # Just a service identifier - assumes same application
+    # - serviceA
+    # A service in another application:
+    # - [app-id].[service-id]
+    # a full service account email
+    # - foo-service@serviceaccount.com
+    # - group:somegroup@google.com
+    # non service account emails are assumed to be user: type
+    # - user@gmail.com
+
+  owners:
+    - foo@other.com
+
+runtime:
+# args passed to deployment
+  # cpu: 1
+  # memory: 
+  # min-instances
+  # timeout
+
+# less used
+homepage: http://custom/docs
