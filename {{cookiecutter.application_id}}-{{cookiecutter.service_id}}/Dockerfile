@@ -4,7 +4,7 @@ COPY go.* /modbuild/
 WORKDIR /modbuild
 ENV GOPROXY=https://proxy.golang.org
 RUN go mod download
-COPY . /modbuild
+COPY *.go /modbuild/
 RUN go build -o /app *.go
 
 FROM alpine:3.9
