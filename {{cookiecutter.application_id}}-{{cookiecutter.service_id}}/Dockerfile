@@ -1,5 +1,4 @@
 FROM gcr.io/svctk-images/demo-go
-RUN apk update && apk add git && apk add alpine-sdk && apk add ca-certificates && rm -rf /var/cache/apk/*
 COPY go.* /modbuild/
 WORKDIR /modbuild
 ENV GOPROXY=https://proxy.golang.org
