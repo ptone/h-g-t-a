@@ -1,6 +1,6 @@
 {
     "application_id": "onboarding",
-    "author": "ptone",
+    "author": "ptone@google.com",
     "service_id": "hello-test",
     "envs": {
         "development":"",

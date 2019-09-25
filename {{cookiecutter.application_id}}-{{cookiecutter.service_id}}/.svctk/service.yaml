@@ -31,7 +31,7 @@ auth:
     # - user@gmail.com
 
   owners:
-    - foo@other.com
+    - {{cookiecutter.author}
 
 runtime:
 # args passed to deployment
