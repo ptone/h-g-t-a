@@ -1,7 +1,7 @@
 trigger:
   # Builds on any push to master
   commit-match: '{{cookiecutter.organization_id}}.{{cookiecutter.application_id}}.{{cookiecutter.service_id}}.master_'
-  event-type: repo-push
+  event-type: code-change
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/{{cookiecutter.envs.development}}/{{cookiecutter.service_id}}:$_COMMIT_ID', '.']
